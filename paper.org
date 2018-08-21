@@ -1,0 +1,116 @@
+#+LATEX_HEADER: \usepackage[backend=biber, authordate, ibidtracker=context,natbib,doi=false,isbn=false,url=false]{biblatex-chicago}
+#+LATEX_HEADER: \addbibresource{~/Documents/bibliography/references.bib}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+#+OPTIONS: toc:t num:t
+#+TITLE: What Bayesian Models of Cognition Tell Us About the Problem of Induction
+#+AUTHOR: Conrad Friedrich
+#+SUBTITLE: Class paper for Epistemology of Machine Learning, w/ Tom Sterkenburg, MCMP, LMU Munich
+#+DATE: \today
+
+#+BEGIN_abstract
+How does the mind make so much from so little?
+
+This catchy rephrasing of the classical problem of induction is the central theme of the present paper. It is argued that human inductive reasoning is successful because of the copious use of inductive biases. The inductive constraints are learned in the form of rich, structured and abstract background knowledge. A key factor is the ability to transfer structured knowledge between different learning problems. Bayesian models of cognition are empirically adequate and capture the hierarchical structure of background knowledge convincingly. 
+
+thesis: Examining human inductive reasoning sheds light on the problem of induction by giving an account of how inductive biases can be acquired in a motivated, systematic fashion. 
+
+The argument proceeds as follows. Human inductive reasoning is arguably successful. Results from statistical learning theory suggest that there is no free lunch, i.e. no universal learning procedure. Instead, inductive biases provide reasonable limitations for the hypothesis space. Bayesian models of human cognition, and in particular, hierarchical models give a convincing explanation for the structure and the origin of such biases. By examining these models closely, we can gain insight into how the biases are formed and updated and how they contribute to successful inductive inference. 
+#+END_abstract
+
+- What do hierarchical models have over 'flat' models?
+  - specify what exactly is a flat model, what is a hierarchical model
+  - one advantage: enables one data set informing another by recognizing structural similarity. This might be a huge advantage or just a small on, depending on the problem scope
+
+* Introduction    
+
+The problem of induction has been historically pervasive. Starting with Hume's famous argument for the claim that there is no hope for justification of inferences which go beyond the observed data citep:hume39_treat_human_natur,hume48_enquir_concer_human_under,  the problem reemerged multiple times in different guises in philosophy, e.g. in Goodman's new riddle of induction citep:goodman55_fact_fiction_forec. In statistical learning theory citet:wolpert96_lack_prior_distin_between_learn_algor is said to have reformulated the age-old problem in formally precise terms in form of the so-called No Free Lunch theorem. Since almost all reasoning in the artificial intelligence, human cognition, and even the sciences is fundamentally inductive, the problem continues to be relevant. Many authors citep:vapnik95_natur_statis_learn_theor suggest that a key to successful inductive inference lies in appropriately limiting the hypotheses under consideration, i.e. making use of inductive /biases/, /constraints/, or /priors/ citep:griffiths09_connec. 
+
+The Bayesian framework has already been employed to address the problem of induction, perhaps most notably in the project of inductive logic citep:carnap50_logic_found_probab. Here too, however, the need for empirical premises in the form inductive biases became apparent citep:henderson18_probl_induc.
+While probability theory and logic plausibly can provide an /a priori/ justification for optimal reasoning processes, the framework is compatible with any arbitrary conclusion, given the right premises.
+
+Studying inductive biases, then, goes a long way in addressing key issues in the problem of induction. By taking a closer look at successful inductive reasoners and learning about their inductive biases, we might infer information about the structure of inductive biases more generally, if not at least get a good idea of how inductive biases might be acquired and applied. Actual human reasoning is arguably very successful, and the field of computational cognitive science builds mathematical models to explain this success citep:tenenbaum11_how_to_grow_mind,griffiths10_probab_model_cognit.
+
+In this paper, we are particularly concerned with the /hierarchical structure/ of models in cognitive science. We examine how the structure of these models imposes certain constraints on the learner which induce systematic inductive biases and give a plausible account of how the biases are acquired. These models give a promising candidate as to how one /should/ reason inductively, thereby addressing the normative problem of justifying induction\footnote{We don't intend to commit an is-ought-fallacy though, which is why these models are only seen as a candidate for ideal reasoning. We don't claim this solves any inductive problem.}. 
+
+While there may be no universal learning algorithm, bayesian models of cognition indicate a clear view on what 'optimal' bias could look like. By employing hierarchical representations, information is learned on different levels of abstraction. A single learning problem can inform different levels of abstraction, and abstract knowledge can be transferred to other learning problems, providing biases for future learning problems.
+
+The paper proceeds as follows. 
+
+** TODO ADD SIGNPOSTING TEXT (1 paragraph)
+
+** DONE ALTERNATIVELY NARROWER 
+   CLOSED: [2018-08-21 Di 14:09]
+
+
+* Hierarchical Bayesian Models of Cognition
+
+** TODO QUICK SIGNPOSTING
+
+How does the mind get so much from so little? Ask citet:tenenbaum11_how_to_grow_mind pointedly. Their research focuses on issues in learning and inductive inferences in human cognition, paying particular attention to the human mind's ability to generate a rich, structured representation of the world that goes far beyond the limited data available to the learner. For example, children learn the application of words a lot faster and with fewer examples than a learner which considers all logically possible hypothesis, indicating that they employ strong inductive biases limiting the hypotheses under consideration. A key insight is that the hypotheses are constrained by abstract knowledge the learner applies to the problem. There are, however, some similarities between different learning problems a learner encounters in her development. These similarities can often be represented in the form of more abstract information than the mere data a problem provides. Learning about one problem, then, also informs the more abstract level, and facing another, slightly similar problem afterwards, the learner transfers her new found knowledge in the form of inductive bias. 
+
+
+While many of the models mentioned above have hierarchical structure, all of them are modeled in the Bayesian framework. Bayesian modeling is a particular, wildly popular way to formally deal with reasoning under uncertainty, though by no means the only or only popular alternative citep:halpern03_reason_about_uncer. Bayesian models tend to be semantically transparent and readily interpretable. The Bayesian framework as a means of representing mental states and processes yields a symbolic system, as opposed to subsymbolic accounts, e.g. connectionism citep:clark00_mindw.  
+
+Hierarchical Bayesian models (HBM) have been applied to a lot of different learning scenarios, and are found to agree with empirical data. That is, actual human reasoning can be modeled adequately within the framework in a wide range of circumstances. 
+
+** TODO ADD CITATIONS
+
+** TODO ADD EXAMPLE TO ILLUSTRATE
+
+Of course, the adequacy of the framework is not without its critics in cognitive science citep:mcclelland10_approac_lettin, as is its primacy in philosophy citep:colombo16_bayes_cognit_scien_monop_neglec_framew but this discussion leads too far afield for the purposes of this paper.
+
+In this paper, we argue that hierarchical Bayesian models provide a plausible and systematic way of describing inductive biases of human reasoning and hence show a promising route out of the problem of induction. The claim is supported by two main reasons, which will be described and independently argued for in the following sections. 
+
+First, hierarchical models provide a natural way of describing abstract knowledge. By adding higher level parameters, the first level estimations are constrained in a certain, as we will argue, just-right way. This phenomenon emerges from the hierarchical structure and its effect is evident in the Bayesian formalism.
+
+Second, by incorporating abstract knowledge into the inductive bias, disparate learning problems may benefit from one another by sharing background knowledge, yielding an account of how knowledge from different domains can inform one another and quite plausibly model inductive bias.  
+
+In the following section, we will address both reasons in turn by giving a detailed analyses of a simple model.
+
+* Modeling Inductive Biases
+
+** TODO Quick Signposting
+
+** A Simple Bayesian Model
+
+For the purposes of highlighting different model structures, we take a look at one of the most simple cases of Bayesian inferences. Consider the often-used case of estimating the underlying parameter of a repeatable experiment with dichotomous outcomes. For example, we repeatedly flip a coin of a certain tendency[fn::We'll avoid the more conventional term /bias/ for the coin's tendency to avoid confusion of the coin's bias with the learner's inductive bias.] to land heads, abbreviated $\theta \in (0,1)$. Given data $D$, observed flips $N$ with $z$ heads, what is our posterior subjective probability about the tendency? To calculate, we employ Bayes theorem:
+
+\begin{equation}
+  p(\theta|D) = \frac{p(D|\theta) p(\theta)}{p(D)}
+\end{equation}
+
+where 
+
+\begin{equation}
+p(D) = \int p(D|\theta')p(\theta')d\theta'.
+\end{equation}
+
+We may plausibly assume each flip drawn from a Bernoulli distribution, hence the likelihood $p(D|\theta)$ is given by 
+
+#+NAME: fig:derp
+\begin{equation}
+p(D|\theta) =\binom{N}{z} \theta^z (1-\theta)^{N-z}.
+\end{equation}
+
+Lastly, $p(\theta)$ represents our prior belief of the coin's tendency to come up heads. In the Bayesian framework, the background knowledge the learner applies to the problem is represented by the prior belief. The inductive bias of a learner can be modeled as the prior belief. For the current example, we assume very vague prior, with a slight inclination towards a fair coin.  
+
+
+- Models with multiple hierarchical levels behave differently when updating than models without.
+- A standard model estimates just a single parameter. 
+- For uniform priors, when evaluating the same evidence, i need to compare exactly what a flat and a hierarchical model does
+  - A hierarchical model with just one parameter on each level
+  - A hierarchical model with multiple parameters on the lowest level (corresponding to e.g. different coins, where you know there can be a difference in bias)
+  - It is expected that the hierarchical model shows /shrinkage/.
+  - Build an example analogous to the baseball example (Kruschke Chp 9), but related to a learning task. Compare it to different flat models and make clear that they aren't sufficient. for example. few data points for say a pitcher. but still opinionated because of pitcher-ness. Now if performs way untypical for a pitcher, have some sort of compromise between previous knowledge and data. in flat model, either no data for pitcher, so 100% data, or take all pitcher's data, then there is no compromise.  w/ 
+- Pick an interesting an modelable problem from the papers in the literature
+As EzPz as possible:
+  - start with simplest Bernoulli/Binomial Experiment
+  - continue with simplest hierarchical experiment
+  compare posteriors over Theta
+  - use more complicated hierarchical strucure (only slightly, multiple thetas)
+  - compare with a flat approach. how to deal with? compromise between z_i/N_i and z/N? how to weight? shouldn't that be informed, too? \rightarrow leads to hierarchical model
+* Objections
+
+Adding parameters to a model in a hierarchical structure makes the model more complex
+\printbibliography
