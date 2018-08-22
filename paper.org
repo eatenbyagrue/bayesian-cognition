@@ -105,7 +105,7 @@ After observing twenty draws, of which 17 have been black, the resulting posteri
 
 ** A Simple Model with Multiple Parameters
 
-Consider a case where we have more than one 
+Consider a case where we have more than one bag to draw from. 
 
 
 - Models with multiple hierarchical levels behave differently when updating than models without.
