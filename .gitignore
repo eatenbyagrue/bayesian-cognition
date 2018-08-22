@@ -1,3 +1,6 @@
 *
 !.gitignore
 !paper.org
+!SimpleBayes.R
+!SimpleHierarchical.R
+!SimpleMultiBayes.R
