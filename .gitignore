@@ -1,6 +1,9 @@
 *
 !.gitignore
 !paper.org
+!20bagsJAGS.R
 !SimpleBayes.R
-!SimpleHierarchical.R
-!SimpleMultiBayes.R
+!MultiHierJAGS.bug
+!MultiHierJAGSPriors.bug
+!MultiJAGS.bug
+!MultiJAGSPriors.bug

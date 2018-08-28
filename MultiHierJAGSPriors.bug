@@ -1,0 +1,14 @@
+model {
+    # for(i in 1:0) {
+    #     y[i] ~ dbern(theta[bags[i]])
+    # }
+    for (bIdx in 1:Nbags) {
+        theta[bIdx] ~ dbeta(a, b) T(0.001,0.999)
+    }
+    # alpha and beta are chosen as in Kemp et al 2007: Learning overhyptotheses
+    # but instead of dirichlet, use beta.
+    alpha ~ dexp(1)
+    beta ~ dbeta(1,1) T(0.001,0.999)
+    a <- alpha*beta
+    b <- alpha*(1-beta)
+}

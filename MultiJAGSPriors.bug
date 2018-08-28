@@ -1,0 +1,12 @@
+model {
+    # for(i in 1:Ntotal) {
+    #     y[i] ~ dbern(theta[bags[i]])
+    # }
+    for (bIdx in 1:Nbags) {
+        theta[bIdx] ~ dbeta(a,b) T(0.001,0.999)
+    }
+    alpha <- 1  
+    beta <- 0.5
+    a <- alpha*beta
+    b <- alpha*(1-beta)
+}
