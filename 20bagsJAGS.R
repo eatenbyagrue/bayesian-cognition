@@ -5,7 +5,7 @@ rm(list=ls())
 
 require(rjags)
 source('DBDA2E-utilities.R')
-Niter = 1000
+Niter = 200000
 Nburn = 500
 # Zooms the plot label texts
 cx =1.9 
@@ -64,8 +64,6 @@ mixedBags = function() {
     y = c()
     for(i in 1:(Nbags/2)) {
         add = c(rep(1,i), rep(0,Nbags-i)) 
-        show(length(y))
-        show(add)
         y = c(y, add, add)
     }
     y = c(y,1)
@@ -200,7 +198,6 @@ flatPosUnif = mcmcf(data = uniformBags(),
 flatPosMixed = mcmcf(data = mixedBags(),
                     model = "MultiJAGS.bug")
 #################################################################################
-
 
 openGraph(width=10,height=12)
 ## layout(matrix( c(1:20,
