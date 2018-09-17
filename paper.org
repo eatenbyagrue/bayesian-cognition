@@ -6,7 +6,7 @@
 #+LATEX_HEADER: \onehalfspacing
 #+OPTIONS: toc:t num:t
 #+TITLE: What Bayesian Models of Cognition Tell Us About the Problem of Induction
-#+SUBTITLE: 4598 words
+#+SUBTITLE: 4451 words
 #+AUTHOR: Conrad Friedrich
 #+DATE: \today
 \thispagestyle{empty}
@@ -14,18 +14,6 @@
 \newpage
 
 * Introduction    
-
-In this paper we argue that hierarchical Bayesian models (HBMs) as used in describing human inference processes in the cognitive sciences can inform the philosophical discussion on the problem of induction. In the cognitive sciences, HBMs bring the virtues of precise formal analysis in the Bayesian framework to bear on the research modeling biases in inductive inference processes. They force the researcher to be explicit and precise about modeling the learner's abstract background knowledge. Bayesian models of human cognition, and in particular, hierarchical models give a convincing explanation for the structure and the origin of such inductive biases. By examining these models closely, we can gain insight into how the biases are formed and updated and how they contribute to successful inductive inference. 
-
-In many situations, human reasoning is an exemplar of successful generalization. By examining plausible descriptive formal models of inductive bias in successful reasoning, the philosophical discussion can benefit by identifying key conditions of a successful inductive inference. We argue that by looking at HBMs to model inductive bias, we are able to identify such key conditions. The argument in the paper proceeds as follows:  
-
-1. Human inductive reasoning is successful in relevant cases.
-2. HBMs give an empirically adequate account of bias in inductive reasoning processes.
-3. HBMs /can/ highlight structural features of the reasoning process that enable successful inductive inference.
-
-From this, we can establish the claim of this paper.
-
-For premises 1 and 2, we survey and have to refer to and describe the relevant empirical literature. These are less controversial. The main part of this paper concerns itself with providing support for premise 3. We do so by---step by step---building up a more and more complex model of a simple reasoning process, intending to make transparent the benefits that come with explicitly modeling inductive bias in the form of abstract background knowledge.
 
 The problem of induction has been historically pervasive. Starting with Hume's famous argument for the claim that there is no hope for justification of inferences which go beyond the observed data citep:hume39_treat_human_natur,hume48_enquir_concer_human_under,  the problem reemerged multiple times in different guises in philosophy, e.g. in Goodman's new riddle of induction citep:goodman55_fact_fiction_forec. In statistical learning theory, citet:wolpert96_lack_prior_distin_between_learn_algor is said to have reformulated the age-old problem in formally precise terms in form of the so-called No Free Lunch theorem. Since reasoning in artificial intelligence, human cognition, and even the sciences is fundamentally inductive, the problem continues to be relevant. Many authors (e.g. citet:vapnik95_natur_statis_learn_theor) suggest that a key to successful inductive inference lies in appropriately limiting the hypotheses under consideration, that is, making use of inductive /biases/, /constraints/, or /priors/ citep:griffiths09_connec. 
 
@@ -36,9 +24,15 @@ Studying inductive biases, then, goes a long way in addressing the problem of in
 
 In this paper, we are particularly concerned with the /hierarchical structure/ of models in cognitive science. We examine how the structure of these models imposes certain constraints on the learner which induce systematic inductive biases and give a plausible account of how the biases are acquired. 
 
-While there may be no universal learning algorithm, bayesian models of cognition indicate what optimal bias could look like. By employing hierarchical representations, information is learned on different levels of abstraction. A single learning problem can inform different levels of abstraction, and abstract knowledge can be transferred to other learning problems, providing biases for future learning problems.
+While there may be no universal learning algorithm, Bayesian models of cognition indicate what optimal bias could look like. By employing hierarchical representations, information is learned on different levels of abstraction. A single learning problem can inform different levels of abstraction, and abstract knowledge can be transferred to other learning problems, providing biases for future learning problems.
 
-The paper is structured as follows. In section [[Hierarchical Bayesian Models of Cognition]], we survey the literature in the cognitive sciences and establish the success of HBMs in empirical models. Section [[Modeling Inductive Biases]] is the main part of the paper and contains the argument for premise 3 as described in this section. We develop a hierarchical model for a simple inference problem from the ground up and look closely at its features. We identify central features of this approach that contribute to modeling inductive bias with HBMs and emphasize how they support the claim of the paper. In section [[Objections]], finally, we look at some glaring objections and argue against them. 
+In this paper, then, we argue that hierarchical Bayesian models (HBMs) as used in describing human inference processes in the cognitive sciences can inform the philosophical discussion on the problem of induction. 
+
+In the cognitive sciences, HBMs bring the virtues of precise formal analysis in the Bayesian framework to bear on the research modeling biases in inductive inference processes. They force the researcher to be explicit and precise about modeling the learner's abstract background knowledge. Bayesian models of human cognition, and in particular, hierarchical models give a convincing explanation for the structure and the origin of such inductive biases. By examining these models closely, we can gain insight into how the biases are formed and updated and how they contribute to successful inductive inference. 
+
+In many situations, human reasoning is an exemplar of successful generalization. By examining plausible descriptive formal models of inductive bias in successful reasoning, the philosophical discussion can benefit by identifying key conditions of a successful inductive inference. We argue for this by---step by step---building up a more and more complex model of a simple reasoning process, intending to make transparent the benefits that come with explicitly modeling inductive bias in the form of abstract hierarchical background knowledge.
+
+The paper is structured as follows. In Section [[Hierarchical Bayesian Models of Cognition]], we survey the literature in the cognitive sciences and establish the success of HBMs in empirical models. Section [[Modeling Inductive Biases]] is the main part of the paper. We develop a hierarchical model for a simple inference problem from the ground up and look closely at its features. We identify central features of this approach that contribute to modeling inductive bias with HBMs and emphasize how they support the claim of the paper. In Section [[Objections]], finally, we look at some salient objections and argue against them. 
 
 * Hierarchical Bayesian Models of Cognition
 
@@ -56,11 +50,7 @@ Of course, the adequacy of the framework is not without its critics in cognitive
 
 * Modeling Inductive Biases
 
-This section presents an extendend argument for premise 3 as described in the introduction.
-
-- HBMs /can/ highlight structural features of the reasoning process that enable successful inductive inference.
-
-The section is structured as follows. We first build a simple Bayesian model in section [[The Simplest Bayesian Model]] and extend it to a slightly more complex Bayesian model in section [[Multiple Parameters]]. Recognizing and highlighting its shortcomings, we develop a hierarchical Bayesian model that addresses these problems in section [[Introducing Hierarchy]]. We examine closely /why/ this is successful and identify structural features that contribute to its success[fn::The present section draws on citet:kruschke11_doing_bayes, chapters 5 and 9, citet:jaynes03_probab_theor, chapter 6, citet:gelman13_bayes_data_analy_third_edition, chapter 5, and reproduces a model of citet:kemp07_learn_overh_with_hierar_bayes_model.].
+The section is structured as follows. We first build a simple Bayesian model in Section [[The Simplest Bayesian Model]] and extend it to a slightly more complex Bayesian model in Section [[Multiple Parameters]]. Recognizing and highlighting its shortcomings, we develop a hierarchical Bayesian model that addresses these problems in Section [[Introducing Hierarchy]]. We examine closely /why/ this is successful and identify structural features that contribute to its success[fn::The present section draws on citet:kruschke11_doing_bayes, chapters 5 and 9, citet:jaynes03_probab_theor, chapter 6, citet:gelman13_bayes_data_analy_third_edition, chapter 5, and reproduces a model of citet:kemp07_learn_overh_with_hierar_bayes_model.].
 ** The Simplest Bayesian Model
 
 For the purposes of highlighting different model structures, we take a look at one of the simplest cases of Bayesian inferences. Following that, we will look at a model with a slightly more complicated structure.
@@ -83,24 +73,24 @@ We may plausibly assume each draw generated by a Bernoulli distribution, hence t
 p(y|\theta) =\binom{N}{z} \theta^z (1-\theta)^{N-z}.
 \end{equation}
 
-Lastly, \( p(\theta) \) represents our prior belief of the proportion of white marbles. In the Bayesian framework, the background knowledge the learner applies to the problem is represented by the prior belief. The inductive bias of a learner can be modeled as the prior belief. For the current example, we assume a prior biased towards uniformity of the bags, as can be seen in figure [[fig:simplebayes]], top. Formally, we say that \theta is beta distributed with parameters $a,b$: 
+Lastly, \( p(\theta) \) represents our prior belief of the proportion of white marbles. In the Bayesian framework, the background knowledge the learner applies to the problem is represented by the prior belief. The inductive bias of a learner can be modeled as the prior belief. For the current example, we assume a prior biased towards uniformity of the bags, as can be seen in Figure [[fig:simplebayes]], top. Formally, we say that \theta is beta distributed with parameters $a,b$: 
 
 \begin{equation}
 \theta \sim ~ \text{Beta}(a,b)
 \end{equation} 
 
-and set $a=b=0.5$. Note that this is an arbitrary choice. In the Bayesian framework, we could use any kind of prior as long as it is a probability distribution.
+and set $a=b=0.5$. Note that this is an arbitrary choice. In the Bayesian framework, we could use almost any kind of prior as long as it is a probability distribution.
 
 #+NAME: fig:simplebayes
 #+ATTR_LATEX: :width 1\linewidth 
-#+CAPTION: Plots of the model described in section [[The Simplest Bayesian Model]]. Expected values of the posteriors plotted as a straight line. Labels for the y-axis omitted.
+#+CAPTION: Plots of the model described in Section [[The Simplest Bayesian Model]]. Expected values of the posteriors plotted as a straight line. Labels for the y-axis omitted.
 [[./SimpleBayes.pdf]]
 
-Suppose we draw a single white ball and update our beliefs. The resulting posterior is plotted in figure [[fig:simplebayes]], center. The confidence has shifted from previously high confidence in an all-white and all-blue bag to just high confidence in an all-white bag. All other proportions of marbles in the bag are still on the table, however. This posterior is still /vague/.
+Suppose we draw a single white ball and update our beliefs. The resulting posterior is plotted in Figure [[fig:simplebayes]], center. The confidence has shifted from previously high confidence in an all-white and all-blue bag to just high confidence in an all-white bag. All other proportions of marbles in the bag are still on the table, however. This posterior is still /vague/.
 
-After observing twenty draws of which 17 have been white, the resulting posterior is a lot more /certain/, plotted in figure [[fig:simplebayes]], bottom. The data has had considerable impact on the posterior, while the prior belief does not have much effect. Almost all confidence lies between 0.6 and 1.0. Note that the previously high confidence for an all-blue bag is gone. Pressed for a point estimate of the probability that the next draw is a white marble, the Bayesian reasoner might give the expected value of the posterior distribution, plotted as a straight line. 
+After observing twenty draws of which 17 have been white, the resulting posterior is a lot more /certain/, plotted in Figure [[fig:simplebayes]], bottom. The data has had considerable impact on the posterior, while the prior belief does not have much effect. Almost all confidence lies between 0.6 and 1.0. Note that the previously high confidence for an all-blue bag is gone. Pressed for a point estimate of the probability that the next draw is a white marble, the Bayesian reasoner might give the expected value of the posterior distribution, plotted as a straight line. 
 
-This straightforward problem is addressed neatly in the Bayesian framework.
+This straightforward problem thus is convincingly addressed in the Bayesian framework.
 
 ** Multiple Parameters
 
@@ -109,26 +99,26 @@ What can we predict for subsequent draws?
 
 Arguably, the probability of colors drawn from each bag is determined by the proportion of colors in each bag, and hence and appropriate model has multiple parameters \( \theta_i \), one for each bag /i/. Since each bag is different, our prior assumes the bags proportions to be independent, formally \({ p(\theta_i) = p(\theta_i|\theta_j) }\) for all \(i,j\). We assume the same prior as before, such that each \(\theta_i \sim \text{Beta}(a,b) \) with \(a=b=0.5\). Each \(\theta_i\) is individually estimated by the marbles we drew out of that bag /i/.
 
-Suppose now that we examine 20 bags, of which we draw 20 marbles each. The results are varied, with the average proportion of white marbles in a bag tending towards less than \(0.5\). When we decide to open a 21st bag and draw a white marble, what is the posterior estimate for the proportion in that bag, i.e. \( p(\theta_{21}) \)? It is the same as in the case with only one bag, with \( N=1, z=1 \), figure [[fig:simplebayes]], center. We haven't learned anything about bag 21 by looking at any of the other bags, per assumption of the model.  
+Suppose now that we examine 20 bags, of which we draw 20 marbles each. The results are varied, with the average proportion of white marbles in a bag tending towards less than \(0.5\). When we decide to open a 21st bag and draw a white marble, what is the posterior estimate for the proportion in that bag, i.e. \( p(\theta_{21}) \)? It is the same as in the case with only one bag, with \( N=1, z=1 \), Figure [[fig:simplebayes]], center. We haven't learned anything about bag 21 by looking at any of the other bags, per assumption of the model.  
 
 This seems unproblematic, so far. Compare, however, your intuition in the following case:
 
 - The Curious Uniform Marble Case :: You encounter an abandoned stack of bags of marbles, and, curiously, start drawing from one after the other. After 20 marbles each from 20 bags, all of the marbles have been completely uniform in color: 10 have been all-blue, 10 have been all-white. You open the 21st, and draw a white marble. What color do you expect the rest of the marbles in the bag to be? 
 
-The intuition is clear, we claim: We have good reason to assume the rest of the marbles to be white, therefore we place high confidence on an all-white bag. More confidence, at least, than would the 21st bag have been the first bag to open. This intuition is key. Let us look at what our simple model with multiple parameters suggests, as can be seen in figure [[fig:flat20]].  
+The intuition is clear, we claim: We have good reason to assume the rest of the marbles to be white, therefore we place high confidence on an all-white bag. More confidence, at least, than would the 21st bag have been the first bag to open. This intuition is key. Let us look at what our simple model with multiple parameters suggests, as can be seen in Figure [[fig:flat20]].  
 
-#+CAPTION: Plots from the model described in section [[Multiple Parameters]]. Each row shows the distributions of a single parameter given different data, here \(\theta_1, \theta_{11}, \theta_{21}\). The first column shows the priors. The second column shows the posteriors after mixed input, where \(N_1 = 20, z_1 = 1, N_{11} = 20, z_{11} = 6, N_{21} = 1, z_{21} = 1\). The third column shows the posteriors after observing the uniform bags as, where \(N_1 = 20, z_1 = 20, N_{11} = 20, z_{11} = 0, N_{21} = 1, z_{21} = 1\). 
+#+CAPTION: Plots from the model described in Section [[Multiple Parameters]]. Each row shows the distributions of a single parameter given different data, here \(\theta_1, \theta_{11}, \theta_{21}\). The first column shows the priors. The second column shows the posteriors after mixed input, where \(N_1 = 20, z_1 = 1, N_{11} = 20, z_{11} = 6, N_{21} = 1, z_{21} = 1\). The third column shows the posteriors after observing the uniform bags as, where \(N_1 = 20, z_1 = 20, N_{11} = 20, z_{11} = 0, N_{21} = 1, z_{21} = 1\). 
 #+Name: fig:flat20
 #+ATTR_LATEX: :width 1.1\linewidth 
 [[./Flat20Bags.pdf]] 
 
-The first two rows show \(\theta_1, \theta_{11}\). Each bag number 1--20 got 20 draws, with different posteriors dependent on the number of white marbles. The third row shows \( \theta_{21} \), which we estimate after only a single draw as in uniform marble case. Notably, both posteriors distributions are identical. They are also identical to the case of a single parameter as described in section [[The Simplest Bayesian Model]]. That is, these models do not make any difference between the cases as far as \( \theta_{21} \) is concerned. The clear intuition just described suggests that we have stronger confidence in the next marble drawn from bag 21 being white in the uniform case than in the mixed bag case. The model as presented cannot account for this intuition.
+The first two rows show \(\theta_1, \theta_{11}\). Each bag number 1--20 got 20 draws, with different posteriors dependent on the number of white marbles. The third row shows \( \theta_{21} \), which we estimate after only a single draw as in uniform marble case. Notably, both posteriors distributions are identical. They are also identical to the case of a single parameter as described in Section [[The Simplest Bayesian Model]]. That is, these models do not make any difference between the cases as far as \( \theta_{21} \) is concerned. The clear intuition just described suggests that we have stronger confidence in the next marble drawn from bag 21 being white in the uniform case than in the mixed bag case. The model as presented cannot account for this intuition.
 
 How could we as conservatively as possible deal with this mismatch of intuition and model prediction? 
 
 First, by denying the challenge. If you don't share the intuition, the model doesn't need to account for it, right? But some examination reveals this is not so easy. Assuming we actually want intuitive reasoning and our model to agree, it is absolutely natural to assume /some/ similarity between the bags, given that we found them all on a stack. They already share some causal history, which makes it all the more plausible they share some other features, too. Even the slightest nod in this direction renders the model inadequate. This does not lead anywhere for the committed Bayesian. 
 
-Second, we might make a methodological point: This isn't a question of intuition at all, aren't we arguing from cognitive science? This is a valid question and will be addressed later on in section [[Objections]]. We argue against it, however.
+Second, we might make a methodological point: This isn't a question of intuition at all, aren't we arguing from cognitive science? This is a valid question and will be addressed later on in Section [[Objections]]. We argue against it, however.
 
 Third, we might adapt the model to fit. This is much more promising. How to proceed? We want the marbles from the other bags to inform our estimate of \theta_{21}. A natural response is to take them into account, too, and to condition on all drawn marbles from all 21 bags. But this shifts all of the import on the cumulative data. Whether we draw a white or blue marble from bag 21 only shifts our posterior minutely. And shouldn't the marble from the actual bag we are examining be relevant to our estimation? More subtly, we might give a weighted average, and define weights \(w_1, w_2\) such that our posterior estimate  \(p^*\) is a linear convex combination of the estimations of bag number 21 and all other bags:
 \begin{equation}
@@ -140,7 +130,7 @@ As hinted at some times in this paper already, hierarchical Bayesian models prov
 
 ** Introducing Hierarchy
 
-Strictly speaking, the model discussed so far already has a hierarchy: We take the observable data generated by a parameter \theta which we cannot directly observe. Instead, we estimate the parameter. In hierarchical models, we just add more of these unobserved variables: We take parameter \theta to be influenced by additional parameters. Such structures of probabilistic dependence and independence combined with probability distributions over them can represent abstract knowledge (e.g. cite:goodman10_learn_theor_causal,kemp09_struc_statis_model_induc_reason). For example, we might learn in the uniform bags case that the bags tend to be uniform in color, but that it is not clear whether uniformly blue or white. This abstract knowledge can be represented by a joint probability distribution over higher level parameters citep:kemp07_learn_overh_with_hierar_bayes_model, as we will describe and examine in this section.
+Strictly speaking, the model discussed so far already has a hierarchy: We take the observable data generated by a parameter \theta which we cannot directly observe. Instead, we estimate the parameter. In hierarchical models, we just add more of these unobserved variables: We take parameter \theta to be influenced by additional parameters. Such structures of probabilistic dependence and independence combined with probability distributions over them can represent abstract knowledge (e.g. cite:goodman11_learn_theor_causal,kemp09_struc_statis_model_induc_reason). For example, we might learn in the uniform bags case that the bags tend to be uniform in color, but that it is not clear whether uniformly blue or white. This abstract knowledge can be represented by a joint probability distribution over higher level parameters citep:kemp07_learn_overh_with_hierar_bayes_model, as we will describe and examine in this section.
 
 As before, we observe 21 bags, their data denoted \(y_i\), with parameters \(\theta_i\). Now, instead of priors with fixed parameters for theta, we model the parameters, too. Figure \ref{fig:bayesnet} shows the independency structure.    
 
@@ -166,7 +156,7 @@ As before, we observe 21 bags, their data denoted \(y_i\), with parameters \(\th
   \caption{\label{fig:bayesnet} Dependencies intended in the hierarchical model, here in form of a directed acyclic graph.}
 \end{figure}
 
-In addition to figure \ref{fig:bayesnet}, the model is given by the following description. 
+In addition to Figure \ref{fig:bayesnet}, the model is given by the following description. 
 
 \begin{align*}
   y_i &\sim \text{Bin}(\theta) \\
@@ -179,7 +169,7 @@ In addition to figure \ref{fig:bayesnet}, the model is given by the following de
 
 The parameters \alpha and \beta describe how we may think the \(\theta_i\) are distributed, by way of a beta distribution with parameters /a,b/. They influence all \(\theta_i\). By learning more about a single \theta, we may shift our confidence about the generating parameters \alpha and \beta. This, in turn, influences our beliefs about different \(\theta_i\).
 
-Formally, given the graph in figure \ref{fig:bayesnet} to constrain our probability distribution, we can apply the Markov condition to the chain rule from probability theory and simplify the calculation for the posterior joint distribution, for \(n=21\), to:
+Formally, given the graph in Figure \ref{fig:bayesnet} to constrain our probability distribution, we can apply the Markov condition to the chain rule from probability theory and simplify the calculation for the posterior joint distribution, for \(n=21\), to:
 
 #+NAME: eq:jointposterior
 \begin{equation}
@@ -187,18 +177,18 @@ p(y_1,\dots,y_n,\theta_1,\dots,\theta_n,\alpha,\beta) = p(\alpha)p(\beta)\prod_{
 \end{equation}
 
 #+NAME: fig:hierarchical20 
-#+CAPTION: Plots from the model described in section [[Introducing Hierarchy]]. Each row shows the distributions of a single parameter given different data, here \(\theta_{11}, \theta_{21}\). The first column shows the priors. The second column shows the posteriors after mixed input, where \(N_{11} = 20, z_{11} = 6, N_{21} = 1, z_{21} = 1\). The third column shows the posteriors after observing the uniform bags, where \(N_{11} = 20, z_{11} = 0, N_{21} = 1, z_{21} = 1\). 
+#+CAPTION: Plots from the model described in Section [[Introducing Hierarchy]]. Each row shows the distributions of a single parameter given different data, here \(\theta_{11}, \theta_{21}\). The first column shows the priors. The second column shows the posteriors after mixed input, where \(N_{11} = 20, z_{11} = 6, N_{21} = 1, z_{21} = 1\). The third column shows the posteriors after observing the uniform bags, where \(N_{11} = 20, z_{11} = 0, N_{21} = 1, z_{21} = 1\). 
 #+ATTR_LATEX: :width 1.1\linewidth 
 [[./Hierarchical20Bags.pdf]]
 
 
-In the end, we are mostly interested in the posterior distribution of the \(\theta_i\) after learning all data. We can calculate the marginal posterior for, say, \theta_1 by conditioning equation [[eq:jointposterior]] on \(y\) and integrating out all other parameters. 
+In the end, we are mostly interested in the posterior distribution of the \(\theta_i\) after learning all data. We can calculate the marginal posterior for, say, \theta_1 by conditioning Equation [[eq:jointposterior]] on \(y\) and integrating out all other parameters. 
 
-For even slightly complicated models like this one, the equation doesn't usually admit to an analytical solution, such that we need to apply a numerical strategy. With a straight forward grid approximation this can become quite time intensive to compute with a growing number of parameters as the number of points to calculate explodes, at least before optimization. In recent decades, however, a family of algorithms have been developed to address these issues. These so-called Markov Chain Monte Carlo (MCMC)[fn::A very accessible introduction can be found e.g. in citet:kruschke11_doing_bayes, chapter 7.] algorithms have been employed to calculate the posteriors in figure [[fig:hierarchical20]]. 
+For even slightly complicated models like this one, the equation doesn't usually admit to an analytical solution, such that we need to apply a numerical strategy. With a straight forward grid approximation this can become quite time intensive to compute with a growing number of parameters as the number of points to calculate explodes, at least before optimization. In recent decades, however, a family of algorithms have been developed to address these issues. These so-called Markov Chain Monte Carlo (MCMC)[fn::A very accessible introduction can be found e.g. in citet:kruschke11_doing_bayes, chapter 7.] algorithms have been employed to calculate the posteriors in Figure [[fig:hierarchical20]]. 
 
-Two things should be noted about the results. First, although the priors on \theta are identical between this model and the model in section [[Multiple Parameters]], the posteriors differ. In the uniform case, for \theta_1 to \theta_{20}, the hierarchical model allows the posteriors to be more opinionated and more certain. This is a result of the learned abstract knowledge that the bags tend to be uniform in color, resulting in high confidence that the rest of the marbles drawn from any bag will be of that same color, too. 
+Two things should be noted about the results. First, although the priors on \theta are identical between this model and the model in Section [[Multiple Parameters]], the posteriors differ. In the uniform case, for \theta_1 to \theta_{20}, the hierarchical model allows the posteriors to be more opinionated and more certain. This is a result of the learned abstract knowledge that the bags tend to be uniform in color, resulting in high confidence that the rest of the marbles drawn from any bag will be of that same color, too. 
 
-Second, unlike the model in section [[Multiple Parameters]], the posterior of \theta_{21} differs between both cases different in mixed- and uniform case. Arguably in both cases, the estimate is a lot better: In particular, the result in the uniform case shows a strong tendency to expect the next marble out of \theta_{21} to be white, in accordance with the intuition about the uniform marble case.
+Second, unlike the model in Section [[Multiple Parameters]], the posterior of \theta_{21} differs between both cases different in mixed- and uniform case. Arguably in both cases, the estimate is a lot better: In particular, the result in the uniform case shows a strong tendency to expect the next marble out of \theta_{21} to be white, in accordance with the intuition about the uniform marble case.
 
 ** Forming Inductive Bias
 
@@ -222,13 +212,13 @@ Making a model more complicated by adding additional parameters runs counter to 
 
 First, HBMs create a certain effect, called /shrinkage/ in the statistical literature citep:kruschke11_doing_bayes. In our bag example, the estimation of each \( \theta_i \) tends more towards the average than the data would suggest on its own, shrinking, in general, the range of estimations. This effect naturally reduces overfitting.
 
-Second, the model applies to more data than a single model would. In the bag example, we treat all data within the same model with a lot of parameters, instead of having a separate model for each bag. Additionally, by also modeling more abstract knowledge, the model is open for more abstract data: receiving information that stacks of back tend to have the same characteristics, for example, can inform our model as higher-level data, so to speak. By accounting for more data, the risk to overfit is considerably lowered, as cite:perfors11_tutor_introd_to_bayes_model_cognit_devel, section 4, address.  
+Second, the model applies to more data than a single model would. In the bag example, we treat all data within the same model with a lot of parameters, instead of having a separate model for each bag. Additionally, by also modeling more abstract knowledge, the model is open for more abstract data: receiving information that stacks of back tend to have the same characteristics, for example, can inform our model as higher-level data, so to speak. By accounting for more data, the risk to overfit is considerably lowered, as cite:perfors11_tutor_introd_to_bayes_model_cognit_devel, Section 4, address.  
 
 Taken together, by applying a single, more complex model to more situations and hence account for more data, hierarchical models /can/ induce biases and avoid increasing complexity.
 
 ** The Argument Rests on an Intuition 
 
-As hinted at in section [[Multiple Parameters]], the central argument employs intuition about a case to argue for the use of HBMs. Given that we are talking about descriptive models, isn't this an obvious fallacy? We argue that is not, for multiple reasons. First, we are not making a descriptive claim. Rather, it is methodological, and hence may very well be valid without empirical foundations. Second, this is a philosophical paper, and recourse to intuitions about cases is standard in philosophy. Third, if that is not convincing, the intuition that you might or might not share actually has been found to be shared in empirical studies in similar cases citep:nisbett83_use_statis_heuris_every_induc_reason. 
+As hinted at in Section [[Multiple Parameters]], the central argument employs intuition about a case to argue for the use of HBMs. Given that we are talking about descriptive models, isn't this an obvious fallacy? We argue that is not, for multiple reasons. First, we are not making a descriptive claim. Rather, it is methodological, and hence may very well be valid without empirical foundations. Second, this is a philosophical paper, and recourse to intuitions about cases is standard in philosophy. Third, if that is not convincing, the intuition that you might or might not share actually has been found to be shared in empirical studies in similar cases citep:nisbett83_use_statis_heuris_every_induc_reason. 
 
 ** Human Reasoning Does not Guarantee Rational Reasoning
 
